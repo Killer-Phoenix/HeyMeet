@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Read Letter</title>
+
+  <!-- Elegant Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* Base setup */
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: url('poem.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Playfair Display', serif;
+      color: white;
+      overflow: hidden;
+    }
+
+    /* Cinematic overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(
+        circle at top,
+        rgba(255,255,255,0.05),
+        rgba(0,0,0,0.85)
+      );
+      z-index: -1;
+    }
+
+    /* Subtle background motion */
+    body {
+      animation: slowZoom 40s ease-in-out infinite alternate;
+    }
+
+    @keyframes slowZoom {
+      from { background-size: 100%; }
+      to { background-size: 108%; }
+    }
+
+    /* Glass card */
+    .container {
+      text-align: center;
+      background: rgba(0, 0, 0, 0.55);
+      padding: 55px 75px;
+      border-radius: 26px;
+      box-shadow: 0 35px 70px rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(10px);
+      max-width: 620px;
+      animation: cardEnter 2s ease forwards;
+    }
+
+    @keyframes cardEnter {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Title */
+    h1 {
+      margin-bottom: 20px;
+      font-size: 2.7rem;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      animation: titleFade 2.5s ease forwards;
+    }
+
+    @keyframes titleFade {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Subtitle */
+    p {
+      margin-bottom: 40px;
+      font-size: 1.15rem;
+      opacity: 0.9;
+      line-height: 1.7;
+    }
+
+    /* Premium minimal button */
+    button {
+      padding: 16px 48px;
+      font-size: 18px;
+      border-radius: 50px;
+      background: transparent;
+      color: white;
+      border: 1px solid rgba(255,255,255,0.45);
+      backdrop-filter: blur(6px);
+      cursor: pointer;
+      font-family: 'Playfair Display', serif;
+      box-shadow: 0 0 25px rgba(255,255,255,0.25);
+      transition: all 0.35s ease;
+    }
+
+    button:hover {
+      transform: scale(1.06);
+      box-shadow: 0 0 40px rgba(255,255,255,0.45);
+    }
+
+    button:active {
+      transform: scale(0.98);
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
+    }
+
+    /* Mobile refinement */
+    @media (max-width: 600px) {
+      .container {
+        padding: 38px;
+      }
+
+      h1 {
+        font-size: 2.1rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Read Letter</h1>
+    <p>I hope you can read while listening to the music.</p>
+    <button onclick="playMusic()">Play Music</button>
+  </div>
+
+  <!-- Audio -->
+  <audio id="audioPlayer" src="music.mp3"></audio>
+
+  <script>
+    function playMusic() {
+      const audio = document.getElementById('audioPlayer');
+      audio.play().catch(() => {});
+    }
+  </script>
+
+</body>
+</html>
